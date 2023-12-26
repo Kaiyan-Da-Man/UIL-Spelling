@@ -20,23 +20,23 @@ export class WordCardComponent implements OnInit {
 	sound: string = '';
 	// soundURL: string = '';
 	isRevealed: boolean = false;
-    specialChars: string[] = [];
+	specialChars: string[] = [];
 
 	userAttempt: string = '';
 
 	constructor(
 		private randomWordService: RandomWordService,
 		private wordDictionaryService: WordDictionaryService,
-        private specialCharsService: SpecialCharsService,
+		private specialCharsService: SpecialCharsService,
 	) {}
 
 	ngOnInit(): void {
 		this.getNewWord();
 		// TEST: testing for specific words
 		// this.getWordDictionary(this.word)
-        this.specialCharsService.getSpecialChars().subscribe((specialChars) => {
-            this.specialChars = specialChars;
-        })
+		this.specialCharsService.getSpecialChars().subscribe((specialChars) => {
+			this.specialChars = specialChars;
+		});
 	}
 
 	sayWord(url?: string) {
@@ -54,7 +54,7 @@ export class WordCardComponent implements OnInit {
 		this.sound = '';
 		// this.soundURL = '';
 		this.needDefinition = false;
-        this.isRevealed = false;
+		this.isRevealed = false;
 
 		this.randomWordService.getRandomWord().subscribe((randomWord) => {
 			let modifiedWord = this.modifyWord(randomWord);
@@ -66,7 +66,6 @@ export class WordCardComponent implements OnInit {
 	modifyWord(word: string): string {
 		let modifiedWord = word;
 
-		
 		if (modifiedWord.includes('(')) {
 			modifiedWord = modifiedWord.split('(')[0];
 		}
@@ -74,10 +73,10 @@ export class WordCardComponent implements OnInit {
 			modifiedWord = modifiedWord.slice(0, -2);
 			this.needDefinition = true;
 		}
-        
-        this.word = modifiedWord;
-        
-        if (modifiedWord.includes(',')) {
+
+		this.word = modifiedWord;
+
+		if (modifiedWord.includes(',')) {
 			modifiedWord = modifiedWord.split(',')[0];
 		}
 		if (modifiedWord.includes(' ')) {
@@ -85,7 +84,7 @@ export class WordCardComponent implements OnInit {
 		}
 
 		// TEST:
-		console.log(this.word, "|", modifiedWord);
+		console.log(this.word, '|', modifiedWord);
 		// console.log(this.needDefinition);
 
 		return modifiedWord;
@@ -168,23 +167,23 @@ export class WordCardComponent implements OnInit {
 		}
 
 		// this.soundURL = url.concat(this.sound + '.wav');
-        url = url.concat(this.sound + '.wav');
+		url = url.concat(this.sound + '.wav');
 
 		this.sayWord(url);
 	}
 
 	checkWord() {
-        this.userAttempt = this.userAttempt.replace('\'', '\u{2019}')
+		this.userAttempt = this.userAttempt.replace("'", '\u{2019}');
 
 		if (this.userAttempt === this.word) {
 			this.getNewWord();
-            this.userAttempt = '';
-            this.isRevealed = false;
+			this.userAttempt = '';
+			this.isRevealed = false;
 		} else {
 			// TODO: have word get revealed and allow user to type again.
 			console.log('incorrect');
-            this.userAttempt = '';
-            this.isRevealed = true;
+			this.userAttempt = '';
+			this.isRevealed = true;
 		}
 	}
 }

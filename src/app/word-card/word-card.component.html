@@ -1,26 +1,34 @@
-<div class="container-fluid d-flex justify-content-center align-items-center fill">
-    <div class="card word-card align-items-center">
-        <div class="container h-100">
-            <div class="h-50 justify-content-center align-items-center d-flex">
-                <div class="text-center" *ngIf="isRevealed">
-                    <div>{{ word }}</div>
-                    <div *ngIf="needDefinition">{{ definition }}</div>
-                </div>
-            </div>
+<div
+	class="container-fluid d-flex justify-content-center align-items-center fill"
+>
+	<div class="card word-card align-items-center">
+		<div class="container h-100">
+			<div class="h-50 justify-content-center align-items-center d-flex">
+				<div class="text-center" *ngIf="isRevealed">
+					<div>{{ word }}</div>
+					<div *ngIf="needDefinition">{{ definition }}</div>
+				</div>
+			</div>
 
-            <div>
-                <input [(ngModel)]="userAttempt" class="form-control form-control-lg" (keyup.enter)="checkWord()" />
-                <div class="d-flex justify-content-center">
-                    <div class="btn btn-primary" (click)="getNewWord()">New Word</div>
-                    <div class="btn btn-primary" (click)="sayWord()">Speak</div>
-                </div>
-            </div>
+			<div>
+				<input
+					[(ngModel)]="userAttempt"
+					class="form-control form-control-lg"
+					(keyup.enter)="checkWord()"
+				/>
+				<div class="d-flex justify-content-center">
+					<div class="btn btn-primary" (click)="getNewWord()">
+						New Word
+					</div>
+					<div class="btn btn-primary" (click)="sayWord()">Speak</div>
+				</div>
+			</div>
 
-            <div class="d-flex justify-content-evenly">
-                <div *ngFor="let specialChar of specialChars" class="d-flex">
-                    {{specialChar}}
-                </div>
-            </div>
-        </div>
-    </div>
+			<div class="d-flex justify-content-evenly">
+				<div *ngFor="let specialChar of specialChars" class="d-flex">
+					{{ specialChar }}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

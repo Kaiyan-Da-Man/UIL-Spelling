@@ -3,15 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class SpecialCharsService {
-    private readonly baseUrl = 'assets/';
+	private readonly baseUrl = 'assets/';
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) {}
 
-  getSpecialChars(): Observable<string[]> {
-    return this.http.get(this.baseUrl + 'specialChars.txt', {responseType: 'text'})
-    .pipe(map((specialChars) => specialChars.split(/\r?\n/)));
-  }
+	getSpecialChars(): Observable<string[]> {
+		return this.http
+			.get(this.baseUrl + 'specialChars.txt', { responseType: 'text' })
+			.pipe(map((specialChars) => specialChars.split(/\r?\n/)));
+	}
 }
