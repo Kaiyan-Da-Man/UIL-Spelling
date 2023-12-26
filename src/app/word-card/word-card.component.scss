@@ -1,0 +1,11 @@
+@use '../../styles/variables.scss';
+
+.word-card {
+	width: 50%;
+    height: 60%;
+}
+
+.fill {
+    min-height: 100%;
+    height: 100vh;
+}
