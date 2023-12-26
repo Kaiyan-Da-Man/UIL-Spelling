@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier . --write",
-    "deploy": "ng build --output-path docs && node .\\post-build.js"
+    "deploy": "ng build --output-path docs && node .\\post-build.js && git add . && git commit -m 'deploy' && git push origin main:gh-pages"
   },
   "private": true,
   "dependencies": {
